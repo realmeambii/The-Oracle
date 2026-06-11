@@ -1,0 +1,14 @@
+.team-badge {
+  border-radius: 9px;
+  object-fit: contain;
+  flex: none;
+  background: rgba(255, 255, 255, 0.04);
+}
+.team-badge.monogram {
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: var(--silver-bright);
+  border: 1px solid var(--line);
+  letter-spacing: 0.02em;
+}

@@ -1,0 +1,46 @@
+.probbar {
+  width: 100%;
+}
+.probbar-track {
+  display: flex;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+}
+.probbar.compact .probbar-track {
+  height: 8px;
+}
+.seg {
+  height: 100%;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.seg.home {
+  background: linear-gradient(90deg, var(--blue-deep), var(--blue));
+}
+.seg.draw {
+  background: linear-gradient(90deg, var(--silver-deep), var(--silver));
+}
+.seg.away {
+  background: linear-gradient(90deg, #5b6270, #868d99);
+}
+.seg.lead {
+  filter: brightness(1.25) saturate(1.1);
+  box-shadow: 0 0 14px var(--blue-glow);
+}
+
+.probbar-legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.probbar-legend b {
+  color: var(--text);
+  font-weight: 800;
+}
+.probbar-legend .lead b {
+  color: var(--blue-bright);
+}

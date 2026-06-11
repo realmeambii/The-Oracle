@@ -1,0 +1,291 @@
+:root {
+  /* ---- Core palette: black / white / silver / blue ---- */
+  --bg: #0a0a0c;
+  --bg-2: #101016;
+  --panel: rgba(22, 23, 28, 0.72);
+  --panel-solid: #16171c;
+  --line: rgba(170, 178, 190, 0.14);
+  --line-strong: rgba(170, 178, 190, 0.28);
+
+  --text: #f3f5f8;
+  --text-dim: #aab2be;
+  --text-faint: #6b7280;
+
+  --silver: #c7ccd4;
+  --silver-bright: #e9edf2;
+  --silver-deep: #8a909b;
+
+  --blue: #3da9fc;
+  --blue-bright: #6cc0ff;
+  --blue-deep: #1d6fd0;
+  --blue-glow: rgba(61, 169, 252, 0.35);
+
+  --win: #4ade80;
+  --draw: #cbd2dc;
+  --loss: #f87171;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+  --maxw: 1180px;
+  --header-h: 64px;
+
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Cinzel", "Plus Jakarta Sans", Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  background-image:
+    radial-gradient(900px 500px at 12% -8%, rgba(61, 169, 252, 0.12), transparent 60%),
+    radial-gradient(1100px 600px at 92% 0%, rgba(199, 204, 212, 0.06), transparent 55%),
+    linear-gradient(180deg, #0a0a0c 0%, #0c0d11 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--blue-glow);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--silver-deep), #4a4f59);
+  border-radius: 8px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 clamp(14px, 4vw, 28px);
+}
+
+.page {
+  padding: clamp(20px, 4vw, 36px) 0 80px;
+  animation: rise 0.45s ease both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Surfaces ---------- */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.silver-edge {
+  position: relative;
+}
+.silver-edge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(233, 237, 242, 0.5), rgba(138, 144, 155, 0.05) 40%, rgba(61, 169, 252, 0.35));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ---------- Buttons / chips ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.btn:hover {
+  border-color: var(--blue);
+  background: rgba(61, 169, 252, 0.1);
+  transform: translateY(-1px);
+}
+.btn-primary {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+  box-shadow: 0 6px 20px var(--blue-glow);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--blue-bright), var(--blue));
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.chip.active {
+  color: #061018;
+  background: linear-gradient(135deg, var(--silver-bright), var(--silver));
+  border-color: transparent;
+}
+.chip.blue {
+  color: var(--blue-bright);
+  border-color: rgba(61, 169, 252, 0.4);
+  background: rgba(61, 169, 252, 0.1);
+}
+
+/* ---------- Typography helpers ---------- */
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--silver-deep);
+}
+.section-title {
+  font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.muted {
+  color: var(--text-dim);
+}
+.faint {
+  color: var(--text-faint);
+}
+
+/* ---------- Form result dots ---------- */
+.form-row {
+  display: inline-flex;
+  gap: 5px;
+}
+.form-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  font-size: 0.66rem;
+  font-weight: 800;
+  color: #06120a;
+}
+.form-dot.W {
+  background: var(--win);
+}
+.form-dot.D {
+  background: var(--draw);
+  color: #1a1c20;
+}
+.form-dot.L {
+  background: var(--loss);
+  color: #1a0606;
+}
+
+/* ---------- Utilities ---------- */
+.row {
+  display: flex;
+  align-items: center;
+}
+.between {
+  justify-content: space-between;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.gap-sm {
+  gap: 8px;
+}
+.gap {
+  gap: 14px;
+}
+.spinner {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid var(--line-strong);
+  border-top-color: var(--blue);
+  animation: spin 0.8s linear infinite;
+  margin: 40px auto;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

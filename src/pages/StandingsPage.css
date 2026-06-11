@@ -1,0 +1,91 @@
+.standings-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.group-title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 12px 14px 4px;
+  color: var(--blue-bright);
+}
+.table-wrap {
+  overflow-x: auto;
+  padding: 6px;
+}
+.standings {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 520px;
+}
+.standings th {
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  font-weight: 700;
+  padding: 12px 8px;
+  position: sticky;
+  top: 0;
+}
+.standings td {
+  text-align: center;
+  padding: 10px 8px;
+  border-top: 1px solid var(--line);
+  color: var(--text-dim);
+}
+.standings tbody tr {
+  transition: background 0.15s ease;
+}
+.standings tbody tr:hover {
+  background: rgba(61, 169, 252, 0.06);
+}
+.standings .rank {
+  width: 36px;
+  color: var(--silver);
+  font-weight: 800;
+}
+.standings .club {
+  text-align: left;
+  min-width: 180px;
+}
+.standings td.club {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.club-name {
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.standings .pts {
+  color: var(--silver-bright);
+  font-weight: 800;
+}
+.standings .pos {
+  color: var(--win);
+}
+.standings .neg {
+  color: var(--loss);
+}
+.standings .form .form-dot {
+  width: 18px;
+  height: 18px;
+  font-size: 0.58rem;
+}
+
+/* Top positions accent bar */
+.standings tbody tr:nth-child(-n + 4) .rank {
+  color: var(--blue-bright);
+}
+
+@media (max-width: 640px) {
+  .hide-sm {
+    display: none;
+  }
+}

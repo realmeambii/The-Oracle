@@ -1,0 +1,21 @@
+.league-selector {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+.league-selector .chip {
+  cursor: pointer;
+  flex: none;
+  transition: transform 0.15s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.league-selector .chip:hover:not(.active) {
+  border-color: var(--blue);
+  color: var(--text);
+}
+.league-selector .chip.active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(199, 204, 212, 0.18);
+}

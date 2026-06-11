@@ -1,0 +1,133 @@
+.match-card {
+  display: block;
+  padding: 14px 16px;
+  transition: transform 0.18s ease, border-color 0.2s ease;
+}
+.match-card:hover {
+  transform: translateY(-3px);
+}
+.match-card:hover .predict-cta {
+  color: var(--blue-bright);
+}
+
+.match-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.match-when {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+}
+.status-pill.live {
+  color: var(--loss);
+  border-color: rgba(248, 113, 113, 0.4);
+}
+.status-pill.finished {
+  color: var(--silver);
+}
+.status-pill.upcoming {
+  color: var(--blue-bright);
+  border-color: rgba(61, 169, 252, 0.35);
+}
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--loss);
+  animation: pulse 1.2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.match-teams {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+}
+.team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.team.away {
+  justify-content: flex-end;
+}
+.team-name {
+  font-weight: 600;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.team.won .team-name {
+  color: var(--silver-bright);
+}
+.team.won::after {
+  content: "▸";
+  color: var(--blue);
+  font-size: 0.7rem;
+}
+.team.away.won::after {
+  content: "";
+}
+.team.away.won::before {
+  content: "◂";
+  color: var(--blue);
+  font-size: 0.7rem;
+}
+
+.match-score {
+  min-width: 56px;
+  text-align: center;
+}
+.score {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.score i {
+  color: var(--text-faint);
+  font-style: normal;
+  margin: 0 2px;
+}
+.vs {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+}
+
+.match-card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 0.76rem;
+}
+.predict-cta {
+  font-weight: 700;
+  color: var(--silver);
+  transition: color 0.2s ease;
+}
